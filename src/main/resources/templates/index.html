@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Well Come To My Tomcat Server</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+  <div class="container-fluid" >
+    <div style="margin-top: 20px;" class="jumbotron">
+      <p style="font-size: 48px;" th:inline="text">[[${lang}]]</p>
+      <ul class="list-inline">
+        <li><a th:href="@{${url} + '/en'}">English</a></li>
+        <li><a th:href="@{${url} + '/zh'}">中文</a></li>
+        <li><a th:href="@{${url} + '/sp'}">Español</a></li>
+        <li><a th:href="@{${url} + '/hi'}">हिंदी</a></li>
+        <li><a th:href="@{${url} + '/ar'}">Telugu</a></li>
+      </ul>
+    </div>
+    <p style="font-size: 14px;" th:inline="text">Version: [[${version}]]</p>
+</div>
+</body>
+</html>

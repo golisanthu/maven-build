@@ -1,0 +1,17 @@
+ipcrm/java_webapp_war:
+  Env:
+    - JAVA_HOME: "/usr/lib/jvm/jre-openjdk"
+  PreBuild:
+    - mvn -B dependency:go-offline
+  Build:
+    - mvn -B clean package
+  PkgInclude:
+    - 'target/java-webapp.war'
+  PreInstall:
+    - sudo /opt/puppetlabs/bin/puppet agent -t || true
+    - sudo /opt/puppetlabs/bin/puppet agent -t
+  PostInstall:
+    - sudo cp target/java-webapp.war /opt/apache-tomcat8/webapps/
+  Exec:
+    - export CATALINA_OPTS="$CATALINA_OPTS -Dfile.encoding=UTF-8"
+    - sudo -E /opt/apache-tomcat8/bin/catalina.sh run
